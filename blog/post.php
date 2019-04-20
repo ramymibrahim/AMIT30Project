@@ -1,3 +1,11 @@
+<?php
+$id=$_GET['id'];
+//Use function getRows to get only one post where id=$id
+/*
+http://localhost/amit30/blog/post.php?id=1
+$query ="SELECT posts.*,users.name as posted_by FROM posts inner join users on users.id=posts.user_id where id=$id";
+*/
+?>
 <!DOCTYPE html>
 <html lang="en">
 

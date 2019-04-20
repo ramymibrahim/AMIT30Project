@@ -1,13 +1,7 @@
 <?php
-$posts=[];
-
-
-$con =  mysqli_connect('localhost','root','','blog');
-$result = mysqli_query($con,'SELECT posts.*,users.name as posted_by FROM posts inner join users on users.id=posts.user_id');
-while($row=mysqli_fetch_array($result)){
-  array_push($posts,$row);
-}
-mysqli_close($con);
+require_once('helpers/database.php');
+$posts=getRows('SELECT posts.*,users.name as posted_by FROM posts inner join users on users.id=posts.user_id');
+$categories=getRows("SELECT * FROM categories");
 
 ?>
 <!DOCTYPE html>
@@ -53,9 +47,18 @@ mysqli_close($con);
             <li class="nav-item">
               <a class="nav-link" href="about.html">About</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="post.html">Sample Post</a>
-            </li>
+
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">                          
+              <?php
+                  foreach($categories as $category){
+                    ?>
+                    <a class='dropdown-item' href=''><?php echo $category['name']?></a>
+                  <?php
+                  }
+              ?>
+              </div>
+          </li>  
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
