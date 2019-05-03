@@ -2,7 +2,6 @@
 require_once('helpers/database.php');
 $posts=getRows('SELECT posts.*,users.name as posted_by FROM posts inner join users on users.id=posts.user_id');
 $categories=getRows("SELECT * FROM categories");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,7 +89,7 @@ $categories=getRows("SELECT * FROM categories");
           foreach($posts as $post){
 ?>
           <div class="post-preview">
-            <a href="post.html">
+            <a href="post.php?id=<?php echo $post['id']?>">
               <h2 class="post-title">
                 <?php echo $post['title'];?>
               </h2>
@@ -99,7 +98,7 @@ $categories=getRows("SELECT * FROM categories");
               </h3>
             </a>
             <p class="post-meta">Posted by
-              <a href="#"><?php echo $post['posted_by'];?></a>
+              <a href="users.php?id=<?php echo $post['user_id']?>"><?php echo $post['posted_by'];?></a>
               on <?php echo $post['created_at'];?></p>
           </div>
           <hr>

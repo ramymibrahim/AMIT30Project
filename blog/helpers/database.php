@@ -9,3 +9,11 @@ function getRows($query){
   mysqli_close($con);
   return $rows;
 }
+
+function getRow($query){  
+  $con =  mysqli_connect('localhost','root','','blog');
+  $result=mysqli_query($con,$query);
+  $row=mysqli_fetch_array($result);    
+  mysqli_close($con);
+  return $row;
+}
