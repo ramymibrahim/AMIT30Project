@@ -1,4 +1,5 @@
 <?php
+require_once('helpers/config.php');
 require_once('helpers/database.php');
 if(isset($_GET['cat_id'])){
   $cat_id=$_GET['cat_id'];

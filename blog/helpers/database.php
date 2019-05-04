@@ -17,3 +17,10 @@ function getRow($query){
   mysqli_close($con);
   return $row;
 }
+
+function execute($query){  
+  $con =  mysqli_connect('localhost','root','','blog');
+  $result=mysqli_query($con,$query);
+  mysqli_close($con);
+  return $result;
+}

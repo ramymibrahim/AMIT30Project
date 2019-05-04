@@ -1,5 +1,5 @@
 <?php
-
+require_once('helpers/config.php');
 require_once('helpers/database.php');
 if(isset($_POST['username']) && isset($_POST['password'])){
     $username=$_POST['username'];
@@ -9,8 +9,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     if($user==null){
         $errorMessage="Please enter a valid data";
     }
-    else{
-        session_start();
+    else{        
         $_SESSION['user_data']=$user;     
         header('Location:index.php');
         die();

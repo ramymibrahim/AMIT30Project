@@ -1,4 +1,5 @@
 <?php
+require_once('helpers/config.php');
 require_once('layouts/header.php');
 ?>
 

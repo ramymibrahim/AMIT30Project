@@ -1,4 +1,5 @@
 <?php
+require_once('helpers/config.php');
 require_once('helpers/database.php');
 $id=$_GET['id'];
 $query ="SELECT posts.*,users.name as posted_by FROM posts inner join users on users.id=posts.user_id where posts.id=$id";
