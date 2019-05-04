@@ -1,4 +1,12 @@
 <?php
+session_start();
+$is_author=false;
+$is_admin=false;
+if(isset($_SESSION['user_data'])){
+  $user = $_SESSION['user_data'];
+  $is_author=$user['is_author'];
+  $is_admin=$user['is_admin'];
+}
 require_once('helpers/database.php');
 $categories=getRows("SELECT * FROM categories");
 ?>
@@ -57,9 +65,50 @@ $categories=getRows("SELECT * FROM categories");
               ?>
               </div>
           </li>  
-            <li class="nav-item">
+
+<?php
+if($is_admin){
+  ?>
+  
+          <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">                          
+              <a class='dropdown-item' href=''>Categories</a>
+              <a class='dropdown-item' href=''>Posts</a>
+              <a class='dropdown-item' href=''>Users</a>
+              </div>
+          </li>
+
+          <?php
+}
+if($is_author){
+  ?>
+          <li class="nav-item">
+              <a class="nav-link" href="">Author Posts</a>
+          </li>
+<?php
+}
+?>
+          <li class="nav-item">
               <a class="nav-link" href="contact.php">Contact</a>
             </li>
+
+<?php
+if(!isset($user)){
+  ?>
+            <li class="nav-item">
+              <a class="nav-link" href="login.php">Login</a>
+            </li>
+            <?php
+}
+else{
+  ?>
+  
+            <li class="nav-item">
+              <a class="nav-link" href="logout.php">Logout</a>
+            </li>
+            <?php
+}
+?>
           </ul>
         </div>
       </div>
