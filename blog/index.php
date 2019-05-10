@@ -1,13 +1,11 @@
 <?php
 require_once('helpers/config.php');
-require_once('helpers/database.php');
+require_once($base_path.'helpers/posts.php');
+$cat_id=null;
 if(isset($_GET['cat_id'])){
-  $cat_id=$_GET['cat_id'];
-  $posts=getRows("SELECT posts.*,users.name as posted_by FROM posts inner join users on users.id=posts.user_id WHERE category_id=$cat_id");
+  $cat_id=$_GET['cat_id'];  
 }
-else{
-  $posts=getRows('SELECT posts.*,users.name as posted_by FROM posts inner join users on users.id=posts.user_id');
-}
+$posts=getPosts($cat_id);
 require_once('layouts/header.php');
 ?>
     <!-- Page Header -->

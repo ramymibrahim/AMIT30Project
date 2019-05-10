@@ -1,18 +1,12 @@
 <?php
 require_once('helpers/config.php');
-require_once('helpers/database.php');
+require_once($base_path.'helpers/users.php');
 if(isset($_POST['username']) && isset($_POST['password'])){
     $username=$_POST['username'];
-    $password=$_POST['password'];
-    $q="SELECT * FROM users WHERE username='$username' AND password='$password' AND is_active=1";
-    $user=getRow($q);
-    if($user==null){
+    $password=$_POST['password'];    
+    $user=login($username,$password);
+    if(!$user){
         $errorMessage="Please enter a valid data";
-    }
-    else{        
-        $_SESSION['user_data']=$user;     
-        header('Location:index.php');
-        die();
     }
 }
 require_once 'layouts/header.php';

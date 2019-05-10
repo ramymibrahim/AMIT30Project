@@ -1,12 +1,10 @@
 <?php
 require_once('../helpers/config.php');
-if(!(isset($_SESSION['user_data']) && $_SESSION['user_data']['is_admin'])){
-    header('Location:../index.php');
-    die();
-}
+require_once($base_path.'helpers/users.php');
+protect();
 require_once($base_path.'layouts/header.php');
-require_once($base_path.'helpers/database.php');
-$categories = getRows("SELECT * FROM categories");
+require_once($base_path.'helpers/categories.php');
+$categories = getCategories();
 ?>
 <style>
 

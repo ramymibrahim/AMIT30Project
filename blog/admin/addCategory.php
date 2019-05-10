@@ -1,13 +1,11 @@
 <?php
 require_once '../helpers/config.php';
-if (!(isset($_SESSION['user_data']) && $_SESSION['user_data']['is_admin'])) {
-    header('Location:../index.php');
-    die();
-}
-require_once $base_path . 'helpers/database.php';
+require_once($base_path.'helpers/users.php');
+protect();
+require_once $base_path . 'helpers/categories.php';
 if(isset($_POST['name'])){
     $name=$_POST['name'];
-    if(execute("INSERT INTO categories(id,name) values(null,'$name')")){
+    if(addCategory($name)){
         header('Location:'.$base_url.'admin/categories.php');
     }
     else{
