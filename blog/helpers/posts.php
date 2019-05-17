@@ -13,3 +13,7 @@ function getPosts($cat_id=null){
     }
     return getRows($q);
 }
+
+function addPost($title,$content,$user_id,$category_id,$image){
+    return execute("INSERT INTO posts(id,title,content,user_id,category_id,image) values(null,'$title','$content',$user_id,$category_id,'$image')");
+}
