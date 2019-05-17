@@ -2,9 +2,9 @@
 require_once('../helpers/config.php');
 require_once($base_path.'helpers/users.php');
 protect();
-require_once($base_path.'layouts/header.php');
 require_once($base_path.'helpers/categories.php');
 $categories = getCategories();
+require_once($base_path.'layouts/header.php');
 ?>
 <style>
 
