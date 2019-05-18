@@ -13,6 +13,11 @@ function uploadPhoto($image){
     if($image['size']>2*1024*1024){
         return false;
     }
-    move_uploaded_file($image['tmp_name'],$GLOBALS['base_path'].'uploads/'.$image['name']);    
-    return 'uploads/'.$image['name'];
+
+    $farr = explode(".",$image['name']);
+    $ext = ".".$farr[count($farr)-1];
+    $picture_name='uploads/'.date("U").(microtime(true)*10000).$ext;
+
+    move_uploaded_file($image['tmp_name'],$GLOBALS['base_path'].$picture_name);    
+    return $picture_name;
 }
