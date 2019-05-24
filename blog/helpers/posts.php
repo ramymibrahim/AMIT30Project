@@ -17,3 +17,12 @@ function getPosts($cat_id=null){
 function addPost($title,$content,$user_id,$category_id,$image){
     return execute("INSERT INTO posts(id,title,content,user_id,category_id,image) values(null,'$title','$content',$user_id,$category_id,'$image')");
 }
+
+function getPost($id){
+    return getRow("SELECT * FROM posts WHERE id=$id");
+}
+
+function editPost($id,$title,$content,$category_id,$image){
+    return execute("UPDATE posts set title='$title',content='$content',
+    category_id=$category_id,image='$image' WHERE id=$id");
+}

@@ -46,7 +46,7 @@ $posts = getPosts();
                         <td><?php echo $post['title'];?></td>
                         <td><?php echo $post['posted_by'];?></td>
                         <td><?php echo $post['category_name'];?></td>
-                        <td><a class="btn btn-primary" href="<?php echo $base_url?>admin/editPost.php?id=<?php echo $cat['id'];?>">Edit</a></td>
+                        <td><a class="btn btn-primary" href="<?php echo $base_url?>admin/editPost.php?id=<?php echo $post['id'];?>">Edit</a></td>
                         <td><button class="btn btn-danger">Delete</button></td>
                     </tr>     
                     <?php

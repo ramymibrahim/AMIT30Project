@@ -18,6 +18,7 @@ function uploadPhoto($image){
     $ext = ".".$farr[count($farr)-1];
     $picture_name='uploads/'.date("U").(microtime(true)*10000).$ext;
 
-    move_uploaded_file($image['tmp_name'],$GLOBALS['base_path'].$picture_name);    
-    return $picture_name;
+    if(move_uploaded_file($image['tmp_name'],$GLOBALS['base_path'].$picture_name))
+        return $picture_name;
+    return false;
 }

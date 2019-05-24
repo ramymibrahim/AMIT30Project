@@ -16,6 +16,7 @@ if(isset($_POST['title']) && isset($_POST['content'])  && isset($_POST['category
     $category_id=$_POST['category_id'];    
       if(addPost($title,$content,$user_id,$category_id,$image)){
           header('Location:'.$base_url.'admin/posts.php');
+          die();
       }
       else{
           $errorMessage="Error while adding";
