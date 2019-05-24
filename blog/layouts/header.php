@@ -56,9 +56,9 @@ $categories=getRows("SELECT * FROM categories");
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">                          
               <?php
-                  foreach($categories as $category){
+                  foreach($categories as $_category){
                     ?>
-                    <a class='dropdown-item' href='<?php echo $base_url?>index.php?cat_id=<?php echo $category['id']?>'><?php echo $category['name']?></a>
+                    <a class='dropdown-item' href='<?php echo $base_url?>index.php?cat_id=<?php echo $_category['id']?>'><?php echo $_category['name']?></a>
                   <?php
                   }
               ?>

@@ -16,4 +16,7 @@ function editCategory($id,$name){
 function getCategory($id){
     return getRow("SELECT * FROM categories where id=$id");
 }
+function deleteCategory($id){    
+    return execute("DELETE FROM categories WHERE id=$id");
+}
 ?>

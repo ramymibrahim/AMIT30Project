@@ -4,6 +4,9 @@ require_once($base_path.'helpers/users.php');
 protect();
 require_once($base_path.'layouts/header.php');
 require_once($base_path.'helpers/posts.php');
+if(isset($_POST['id'])){
+  deletePost($_POST['id']);
+}
 $posts = getPosts();
 ?>
 <style>
@@ -47,7 +50,13 @@ $posts = getPosts();
                         <td><?php echo $post['posted_by'];?></td>
                         <td><?php echo $post['category_name'];?></td>
                         <td><a class="btn btn-primary" href="<?php echo $base_url?>admin/editPost.php?id=<?php echo $post['id'];?>">Edit</a></td>
-                        <td><button class="btn btn-danger">Delete</button></td>
+                        <td>
+                          <form action="posts.php" method="POST">
+                            <input type="hidden" name="id" value="<?php echo $post['id'];?>" />
+                          <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure ?')">Delete</button>
+                          </form>
+                          
+                        </td>
                     </tr>     
                     <?php
                 }

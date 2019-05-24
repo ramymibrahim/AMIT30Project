@@ -26,3 +26,7 @@ function editPost($id,$title,$content,$category_id,$image){
     return execute("UPDATE posts set title='$title',content='$content',
     category_id=$category_id,image='$image' WHERE id=$id");
 }
+
+function deletePost($id){
+    return execute("DELETE FROM posts WHERE id=$id");
+}
