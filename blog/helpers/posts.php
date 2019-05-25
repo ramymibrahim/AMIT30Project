@@ -43,3 +43,8 @@ function getPostView($id){
     $query ="SELECT posts.*,users.name as posted_by FROM posts inner join users on users.id=posts.user_id where posts.id=$id";
     return getRow($query);
 }
+function addComment($comment,$user_id,$post_id){
+    return execute("INSERT INTO comments(id,comment,user_id,post_id) values(
+        null,'$comment',$user_id,$post_id
+    )");
+}

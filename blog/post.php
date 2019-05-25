@@ -7,7 +7,10 @@ if ($post == null) {
   header('Location:index.php');
   die();
 }
-
+if(isset($_POST['comment'])){
+  $user_id=$_SESSION['user_data']['id'];
+  addComment($_POST['comment'],$user_id,$id);
+}
 $comments = getComments($id);
 require_once('layouts/header.php');
 ?>
@@ -39,6 +42,22 @@ require_once('layouts/header.php');
   </div>
 </article>
 <hr>
+<?php
+
+if(isset($user)){
+?>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+<form action="post.php?id=<?php echo $post['id']?>" method="POST">
+    <textarea name="comment" class="form-control" placeholder="Please enter comment"></textarea><br />
+    <button type="submit" class="btn btn-primary">Add Comment</button>
+    </form>
+  </div>
+</div>
+  <?php
+}
+?>
+
 <?php
 foreach($comments as $c){
   ?>
