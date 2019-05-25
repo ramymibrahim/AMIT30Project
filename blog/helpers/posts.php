@@ -30,3 +30,16 @@ function editPost($id,$title,$content,$category_id,$image){
 function deletePost($id){
     return execute("DELETE FROM posts WHERE id=$id");
 }
+
+function getComments($post_id){
+    return getRows("
+    SELECT comments.*,users.name,users.image FROM 
+    comments inner join users on users.id=comments.user_id
+    WHERE post_id=$post_id
+    order by comments.created_at desc");
+}
+
+function getPostView($id){
+    $query ="SELECT posts.*,users.name as posted_by FROM posts inner join users on users.id=posts.user_id where posts.id=$id";
+    return getRow($query);
+}

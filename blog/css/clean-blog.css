@@ -418,3 +418,14 @@ footer .copyright {
   font-size: 16px;
   padding: 25px 35px;
 }
+
+.comment {
+  border: 1px solid grey;
+  padding: 10px;
+}
+
+.comment-header .img {
+  width: 100px;
+  float: left;
+  margin: 10px;
+}
